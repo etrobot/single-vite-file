@@ -58,7 +58,7 @@ The application supports dark/light theme switching with:
 ### Styling Architecture
 - **Tailwind CSS** - Primary styling framework with dark mode support enabled
 - **Custom CSS components** - Markdown content styling in `App.css` using `@layer components`
-- **Teal color scheme** - Primary brand color changed from indigo to teal
+- **zinc color scheme** - Primary brand color changed from indigo to zinc
 - **Responsive design** - Sidebar collapses on mobile, maintains fixed layout on desktop
 
 ### Plugin Interaction
@@ -78,7 +78,7 @@ The navigation automatically organizes posts by:
 - Posts without subcategory appear directly under category
 - Navigation state (collapsed/expanded) is maintained in React state
 - **Collapsible sidebar** - toggle button collapses sidebar to icon-only view
-- **Selected post highlighting** - active post shown with teal background
+- **Selected post highlighting** - active post shown with zinc background
 
 ## Development Notes
 - **Tailwind config** - `darkMode: 'class'` enables class-based dark mode

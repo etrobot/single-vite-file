@@ -1,0 +1,6 @@
+/* Base styles and layout safety */
+/* Use border-box globally so padding/borders don't overflow containers */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+

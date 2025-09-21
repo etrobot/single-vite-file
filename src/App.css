@@ -8,6 +8,20 @@ html {
 
 /* Custom Markdown content styling */
 @layer components {
+  /* General content container: prevent long content from expanding layout */
+  .markdown-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere; /* modern */
+    word-break: break-word;  /* fallback */
+  }
+
+  .markdown-content > * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .markdown-content h1,
   .markdown-content h2,
   .markdown-content h3,
@@ -43,15 +57,15 @@ html {
   }
 
   .markdown-content blockquote {
-    @apply border-l-4 border-teal-600 dark:border-teal-400 my-6 py-4 px-6 bg-gray-50 dark:bg-gray-700 italic text-gray-700 dark:text-gray-300;
+    @apply border-l-4 border-zinc-500 dark:border-zinc-400 my-6 py-4 px-6 bg-zinc-50 dark:bg-zinc-700 italic text-gray-700 dark:text-gray-300;
   }
 
   .markdown-content code {
-    @apply bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm font-mono text-red-600 dark:text-red-400;
+    @apply bg-zinc-100 dark:bg-zinc-700 px-2 py-1 rounded text-sm font-mono text-red-600 dark:text-red-400;
   }
 
   .markdown-content pre {
-    @apply bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md p-4 overflow-x-auto my-4;
+    @apply bg-zinc-50 dark:bg-zinc-700 border border-gray-200 dark:border-gray-600 rounded-md p-4 overflow-x-auto my-4;
   }
 
   .markdown-content pre code {
@@ -67,7 +81,7 @@ html {
   }
 
   .markdown-content a {
-    @apply text-teal-600 dark:text-teal-400 no-underline hover:underline;
+    @apply text-zinc-600 dark:text-zinc-400 no-underline hover:underline;
   }
 
   .markdown-content table {
@@ -80,10 +94,39 @@ html {
   }
 
   .markdown-content th {
-    @apply bg-gray-50 dark:bg-gray-700 font-semibold;
+    @apply bg-zinc-50 dark:bg-zinc-700 font-semibold;
   }
 
   .markdown-content hr {
     @apply border-none border-t-2 border-gray-200 dark:border-gray-700 my-8;
+  }
+
+  /* Keep media within container */
+  .markdown-content img,
+  .markdown-content video,
+  .markdown-content iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Make long links and inline code wrap instead of overflowing */
+  .markdown-content a,
+  .markdown-content code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Make wide tables scroll horizontally inside the content area */
+  .markdown-content table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    word-break: break-word;
   }
 }

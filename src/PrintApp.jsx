@@ -43,7 +43,7 @@ function PrintApp() {
 
       {/* Table of Contents */}
       <div className="mb-12 page-break-after">
-        <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b-2 border-teal-500 pb-2">目录</h2>
+        <h2 className="text-2xl font-bold mb-6 text-zinc-900 border-b-2 border-zinc-500 pb-2">目录</h2>
         <div className="space-y-3">
           {sortedPosts.map((post, index) => (
             <div key={post.id} className="flex justify-between items-start">
@@ -63,8 +63,8 @@ function PrintApp() {
 
       {sortedPosts.map((post, index) => (
         <article key={post.id} className={index < sortedPosts.length - 1 ? "page-break-after" : ""}>
-          <header className="mb-6 border-b-2 border-teal-500 pb-4">
-            <h1 className="text-3xl font-bold text-teal-900 mb-2">{post.title}</h1>
+          <header className="mb-6 border-b-2 border-zinc-500 pb-4">
+            <h1 className="text-3xl font-bold text-zinc-900 mb-2">{post.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm text-gray-600">
               <span>📅 {post.date}</span>
               <span>📂 {post.category}</span>
