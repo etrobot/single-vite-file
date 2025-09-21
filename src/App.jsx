@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { marked } from 'marked'
-import { Menu, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Menu, PanelLeftOpen, PanelLeftClose,ListIcon } from 'lucide-react'
 import { blogPosts } from 'virtual:posts'
 import { Navigation } from './Navigation'
 import './App.css'
@@ -81,17 +81,28 @@ function App() {
               onClick={isMobile ? handleToggleDrawer : () => setIsNavCollapsed(!isNavCollapsed)}
               aria-label={isMobile ? '打开菜单' : (isNavCollapsed ? '展开侧栏' : '收起侧栏')}
             >
-              {isMobile ? <Menu size={18} /> : (isNavCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />)}
+              {isMobile ? <PanelLeftOpen size={20} /> : (isNavCollapsed ? <PanelLeftOpen size={20} /> : <PanelLeftClose size={20} />)}
             </button>
 
             <button
               onClick={handleBackClick}
-              className="absolute left-1/2 -translate-x-1/2 border-none px-5 py-2 rounded cursor-pointer text-base transition-colors bg-zinc-300 bg-opacity-10 hover:bg-zinc-400 dark:text-white"
+              className="absolute left-1/2 -translate-x-1/2 border-none px-5 py-1 rounded cursor-pointer text-base transition-colors bg-zinc-300 bg-opacity-10 hover:bg-zinc-400 dark:text-white"
             >
-              HOME
+              <ListIcon />
             </button>
 
-            <div className={`${(!isMobile && isNavCollapsed) ? 'w-0' : 'w-9'}`} />
+            <a
+              href="https://github.com/etrobot/single-vite-file"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute right-2 top-1/2 -translate-y-1/2 border-none rounded w-9 h-9 cursor-pointer flex items-center justify-center text-sm transition-colors bg-zinc-300 bg-opacity-10 hover:bg-zinc-400 dark:text-white"
+              aria-label="GitHub 仓库"
+              title="打开 GitHub 仓库"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+              </svg>
+            </a>
           </div>
         </header>
 
@@ -119,7 +130,7 @@ function App() {
                 {blogPosts.map(post => (
                   <div
                     key={post.id}
-                    className="bg-white dark:bg-zinc-800 p-6 md:p-6 p-4 mb-6 rounded-lg cursor-pointer transition-all border-l-4 border-zinc-600 dark:border-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:-translate-y-1 hover:shadow-lg"
+                    className="bg-white dark:bg-zinc-900 p-6 md:p-6 p-4 mb-6 rounded-lg cursor-pointer transition-all border-l-4 border-zinc-600 dark:border-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:-translate-y-1 hover:shadow-lg"
                     onClick={() => handlePostClick(post)}
                   >
                     <h3 className="text-gray-800 dark:text-gray-100 mb-2 text-xl">{post.title}</h3>
