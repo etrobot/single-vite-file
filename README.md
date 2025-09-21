@@ -2,6 +2,9 @@
 
 这是一个使用 React 和 Vite 构建的单文件静态博客项目。整个应用（包括所有博客内容）会编译成一个独立的 HTML 文件，可以部署到任何地方，无需额外依赖。
 
+<img width="2438" height="1700" alt="image" src="https://github.com/user-attachments/assets/2bbe07fd-fef2-4c44-9e28-6873d64fde7c" />
+
+
 ## 项目特点
 
 - **单文件输出**：所有 JS、CSS 和 Markdown 内容内联到一个 HTML 文件中，实现零依赖部署。
@@ -10,6 +13,9 @@
 - **暗黑模式**：通过 React Context 和 localStorage 实现主题切换，支持系统偏好检测。
 - **分类导航**：自动按 category 和 subcategory 组织文章，支持展开/折叠。
 - **打印优化**：支持生成打印友好版本的 HTML（用于 PDF 转换）。
+
+<img width="1806" height="1816" alt="image" src="https://github.com/user-attachments/assets/270f3088-f1cd-4a87-b847-5e9e63ab0369" />
+
 
 ## 快速开始
 
