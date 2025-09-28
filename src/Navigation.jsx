@@ -56,6 +56,13 @@ export function Navigation({ posts, onPostSelect, selectedPost, onToggleDrawer, 
       aria-hidden={!isMobile && isNavCollapsed}
       tabIndex={!isMobile && isNavCollapsed ? -1 : 0}
     >
+      <button
+            onClick={onMd2HtmlClick}
+            className="w-70 m-2 flex items-center justify-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md transition-colors text-sm font-medium"
+          >
+            <FileText size={16} />
+            MD2HTML
+          </button>
       {/* 桌面端：未折叠时显示；移动端：抽屉打开时显示 */}
       {((!isMobile && !isNavCollapsed) || (isMobile && isDrawerOpen)) && (
         <div className="flex-1 overflow-y-auto">
@@ -117,13 +124,6 @@ export function Navigation({ posts, onPostSelect, selectedPost, onToggleDrawer, 
       {/* 工具按钮和主题切换：桌面端折叠时隐藏；其他情况下固定在底部 */}
       {(!isMobile && isNavCollapsed) ? null : (
         <div className="mt-auto p-4 space-y-3">
-          <button
-            onClick={onMd2HtmlClick}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
-          >
-            <FileText size={16} />
-            MD2HTML
-          </button>
           <ThemeToggle />
         </div>
       )}
