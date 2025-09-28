@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, FileText } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle'
 
-export function Navigation({ posts, onPostSelect, selectedPost, onToggleDrawer, isMobile, isDrawerOpen, isNavCollapsed }) {
+export function Navigation({ posts, onPostSelect, selectedPost, onToggleDrawer, isMobile, isDrawerOpen, isNavCollapsed, onMd2HtmlClick }) {
   const [collapsedCategories, setCollapsedCategories] = useState({})
 
   // 组织文章数据为导航结构
@@ -114,9 +114,16 @@ export function Navigation({ posts, onPostSelect, selectedPost, onToggleDrawer, 
         </div>
       )}
 
-      {/* 主题切换按钮：桌面端折叠时隐藏；其他情况下固定在底部 */}
+      {/* 工具按钮和主题切换：桌面端折叠时隐藏；其他情况下固定在底部 */}
       {(!isMobile && isNavCollapsed) ? null : (
-        <div className="mt-auto p-4">
+        <div className="mt-auto p-4 space-y-3">
+          <button
+            onClick={onMd2HtmlClick}
+            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+          >
+            <FileText size={16} />
+            MD2HTML
+          </button>
           <ThemeToggle />
         </div>
       )}

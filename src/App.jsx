@@ -3,6 +3,7 @@ import { marked } from 'marked'
 import { Menu, PanelLeftOpen, PanelLeftClose,ListIcon } from 'lucide-react'
 import { blogPosts } from 'virtual:posts'
 import { Navigation } from './Navigation'
+import { Md2Html } from './Md2Html'
 import './App.css'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(false)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isNavCollapsed, setIsNavCollapsed] = useState(false)
+  const [showMd2Html, setShowMd2Html] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -44,6 +46,18 @@ function App() {
     setSelectedPost(null)
   }
 
+  const handleMd2HtmlClick = () => {
+    setShowMd2Html(true)
+    setSelectedPost(null)
+    if (isMobile) {
+      setIsDrawerOpen(false)
+    }
+  }
+
+  const handleMd2HtmlBack = () => {
+    setShowMd2Html(false)
+  }
+
   const handleToggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen)
   }
@@ -51,6 +65,11 @@ function App() {
   const getPostExcerpt = (content) => {
     const plainText = content.replace(/[#*`>\[\]]/g, '').replace(/\n+/g, ' ')
     return plainText.substring(0, 100)
+  }
+
+  // 如果显示Md2Html页面，直接返回该组件
+  if (showMd2Html) {
+    return <Md2Html onBack={handleMd2HtmlBack} />
   }
 
   return (
@@ -63,6 +82,7 @@ function App() {
         isMobile={isMobile}
         isDrawerOpen={isDrawerOpen}
         isNavCollapsed={isNavCollapsed}
+        onMd2HtmlClick={handleMd2HtmlClick}
       />
       {isMobile && isDrawerOpen && (
         <div
@@ -74,7 +94,7 @@ function App() {
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header 现在仅在正文区域 */}
         <header className="sticky top-0 z-10 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
-          <div className={`${(!isMobile && isNavCollapsed) ? '' : 'max-w-7xl mx-auto'} w-full h-12 flex items-center justify-between relative`}>
+          <div className={`${(!isMobile && isNavCollapsed) ? '' : ''} w-full h-12 flex items-center justify-between relative`}>
             <button
               className={`ml-2 border-none rounded w-9 h-9 cursor-pointer flex items-center justify-center text-sm transition-colors bg-zinc-300 bg-opacity-10 hover:bg-zinc-400 dark:text-white ${(!isMobile && isNavCollapsed) ? 'absolute top-1/2 -translate-y-1/2' : ''}`}
             style={!isMobile && isNavCollapsed ? { left: 0 } : undefined}
